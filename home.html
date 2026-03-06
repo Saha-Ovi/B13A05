@@ -28,6 +28,34 @@
   </head>
 
   <body>
-  
+    <!-- card holding -->
+    <section class="w-full md:w-[60%]  mx-auto  flex justify-center ">
+       
+        <div class="card w-full max-w-[520px] bg-base-200 shadow-2xl rounded-xl my-15 pt-30">
+         <div class="text-center   space-y-4">
+            <img class="mx-auto w-12"  src="./assets/github-logo.png" alt="">
+            <h2 class="font-semibold text-xl">GitHub Issues Tracker</h2>
+            <p class="text-[#64748B]">Sign in to manage your issues</p>
+        </div>
+             <div class="mx-auto w-full ">
+                <fieldset class="fieldset w-full space-y-3 p-4">
+            
+
+                <label class="label">Username</label>
+                <input id="input-text" class="input w-full" type="text"  placeholder="Enter Username" />
+                <p class="text-primary">Default: admin</p>
+
+                <label class="label">Password</label>
+                <input id="input-password" class="input w-full" type="password" class="input" placeholder="Password" />
+                <p class="text-primary">Default: admin123</p>
+
+                <button class="btn btn-primary mb-5" id="login-btn">Sign In</button>
+            </fieldset>
+             </div>
+        </div>
+   
+    </section>
+    <!-- script js connection -->
+     <script src="./script.js"></script>
   </body>
 </html>
