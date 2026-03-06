@@ -3,9 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+        <title>GitHub Issues Tracker</title>
+    <link
+      rel="shortcut icon"
+      href="./assets/github-logo.png"
+      type="image/x-icon"
+    />
+    <!-- DaisyUI and Tailwind -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+     <link rel="stylesheet" href="./styles.css">
+  </head>
 </head>
 <body>
-    
+    <header class="w-full md:w-[80%] mx-auto">
+        <div class="navbar bg-base-100 shadow-sm flex flex-col md:flex-row gap-4">
+            <!-- left -->
+  <div class="flex items-center gap-2 flex-1">
+    <img class="w-6 " src="./assets/github-logo.png" alt="">
+    <a class="btn btn-ghost text-lg md:text-xl">GitHub Issues Tracker</a>
+  </div>
+  <!-- right -->
+  <div class="join w-full md:w-auto ">
+  <div class="w-full" >
+    <label class="input validator join-item w-full md:w-auto">
+      <input class="w-full" type="text" placeholder="Search issues..." required />
+    </label>
+  </div>
+  <button id="search-btn" class="btn btn-primary join-item">Search</button>
+</div>
+</div>
+    </header>
+    <main>
+
+    </main>
 </body>
 </html>
