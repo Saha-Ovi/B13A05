@@ -1,5 +1,7 @@
 const inputText=document.getElementById("input-text");
 const inputPassword=document.getElementById("input-password");
+
+// login form
 document.getElementById("login-btn").addEventListener("click",()=>
 {
     const userName=inputText.value.toLowerCase();

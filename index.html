@@ -28,7 +28,7 @@
   </head>
 </head>
 <body>
-    <header class="w-full md:w-[80%] mx-auto">
+    <header class="w-full md:w-[80%] mx-auto pt-4">
         <div class="navbar bg-base-100 shadow-sm flex flex-col md:flex-row gap-4">
             <!-- left -->
   <div class="flex items-center gap-2 flex-1">
@@ -47,7 +47,48 @@
 </div>
     </header>
     <main>
+      <!-- toggle function button -->
 
+         <div class="button container mx-auto my-6 bg-base-200 shadow-md p-5">
+            <button onclick="toggleStyle('all-filter-btn')" class="btn btn-primary px-12 py-4 text-white" id="all-filter-btn">All</button>
+            <button onclick="toggleStyle('open-filter-btn')" class="btn bg-base-100 text-gray-500 px-12 py-4" id="open-filter-btn">Open</button>
+            <button onclick="toggleStyle('close-filter-btn')" class="btn bg-base-100 text-gray-500" id="close-filter-btn"> Close</button>
+        </div>
+
+        <!-- Job Count -->
+        <section class="container mx-auto flex justify-between items-center bg-base-200 shadow-md p-5">
+          <!-- left -->
+          <div class="flex justify-center items-center gap-2">
+            <div>
+              <img src="./assets/Aperture.png" alt="">
+            </div>
+            <div>
+              <p class="text-gray-500 all-count-class font-semibold text-xl"><span id="allCount" >50</span> Issues</p>
+              <p class="text-gray-500 all-count-class hidden"><span id="openCount" >0</span> Issues</p>
+              <p class="text-gray-500 all-count-class hidden"><span id="closeCount" >0</span> Issues</p>
+              <p class="text-[#64748B]">Track and manage your project issues</p>
+            </div>
+          </div>
+          <!-- right -->
+          <div class="grid grid-cols-2 items-center gap-4">
+            
+              <div class="flex items-center gap-2">
+                <!-- Open  -->
+              <div>
+                <img src="./assets/Green-Ellipse .png" alt="">
+              </div>
+              <p>Open</p>
+            </div>
+            <!-- close -->
+            <div class="flex items-center gap-2">
+              <div >
+                <img src="./assets/Purple-Ellipse .png" alt="">
+              </div>
+              <p>Close</p>
+            </div>
+          </div>
+    
+        </section>
     </main>
 </body>
 </html>
