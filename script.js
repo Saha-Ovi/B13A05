@@ -1,4 +1,7 @@
+// for all on click it will work for all  event listener
+let allIssue=[];
 
+// all issues are counted here once  when loaded 
 const issueCount=(issues)=>
 {
     const allCount=document.getElementById("allCount");
@@ -8,6 +11,39 @@ const issueCount=(issues)=>
     openCount.innerText=issues.filter(issue=>issue.status==="open").length;
     closedCount.innerText=issues.filter(issue=>issue.status=== "closed").length;
 }
+// count active used for count hide show and active toggle button for color change
+function countActive(type,activeBtnId)
+{
+  // active btn receives all open and closed id for color change
+  const buttons=document.querySelectorAll(".filterBtn");
+  buttons.forEach(button=>
+  {
+    button.classList.remove("btn-primary","text-white");
+    button.classList.add("bg-base-200","text-neutral");
+  }
+  )
+  const activeBtn=document.getElementById(activeBtnId);
+  activeBtn.classList.remove("bg-base-200","text-neutral");
+  activeBtn.classList.add("btn-primary","text-white");
+
+  // count button hide and shown
+   const Counts=document.querySelectorAll(".all-count-class");
+   Counts.forEach(count=>
+    count.classList.add("hidden")
+   );
+   if(type==="all")
+   {
+      Counts[0].classList.remove("hidden");
+   }
+   else if(type==="open")
+   {
+      Counts[1].classList.remove("hidden");
+   }
+   else
+   {
+      Counts[2].classList.remove("hidden");
+   }
+}
 
 // All data
 async function loadIssues() {
@@ -16,6 +52,7 @@ async function loadIssues() {
   );
   const data = await res.json();
   const issues=data.data;
+  allIssue=issues;
 //   issue count called
   issueCount(issues);
 //   display issue called
@@ -28,11 +65,19 @@ function displayIssues(issues) {
     container.innerHTML = "";
   
   issues.forEach((issue) => {
+    // color change here
     const icon=issue.status=="open"?
     "./assets/Open-Status.png":"./assets/Closed-Status.png";
     const borderColor=issue.status=="open"?
     "border-green-600":"border-purple-600";
-    const labelContainer=issue.labels.map(label=>`<span class="badge badge-warning ">${label}</span>`).join(" ");
+    // const labelContainer=issue.labels.map(label=>`<span class="badge badge-warning ">${label}</span>`).join(" ");
+     const labelContainer=issue.labels.map(label=>
+      { const labelColors=label==="bug"?"badge-error":label=== "enhancement"?"badge-success":label==="help wanted"?"badge-warning":label=="documentation"?"badge-info":"badge-primary";
+        return `<span class="badge ${labelColors}">${label}</span>`;
+      }).join(" ");
+    const priorityBtn=issue.priority==="low"? "badge-base-200":issue.priority==="medium" ?"badge-success":"badge-error";
+
+    // element creation for each issue
 
     const div = document.createElement("div");
     div.className=`"card border-2 rounded-lg  p-5 ${borderColor} bg-base-100 shadow-sm`
@@ -41,7 +86,7 @@ function displayIssues(issues) {
   <!-- Top section -->
   <div class="flex justify-between items-center">
     <img src="${icon}" alt="">
-    <p class="text-sm font-semibold badge badge-primary">${issue.priority}</p>
+    <p class="text-sm font-semibold badge ${priorityBtn}">${issue.priority}</p>
   </div>
 
   <!-- Content -->
@@ -70,6 +115,29 @@ function displayIssues(issues) {
     container.appendChild(div);
   });
 }
+document.getElementById("all-filter-btn").addEventListener("click",()=>
+{
+    countActive("all","all-filter-btn");
+    displayIssues(allIssue);
+} );
+
+document.getElementById("open-filter-btn").addEventListener("click",async ()=>
+{
+  const res=await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
+  const data= await res.json();
+  // console.log(data.data);
+  const issues=data.data;
+  const issuesContainer=issues.filter(issue=>issue.status==="open");
+  // console.log(issuesContainer);
+  countActive("open","open-filter-btn")
+  displayIssues(issuesContainer);
+
+})
+
+
+
+
+
+
 loadIssues();
 
-// document.getElementById("all-filter-btn").addEventListener("click", loadIssues);

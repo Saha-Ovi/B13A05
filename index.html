@@ -48,13 +48,11 @@
     </header>
     <main>
       <!-- toggle function button -->
-      <!-- onclick="toggleStyle('all-filter-btn')" -->
-        <!-- onclick="toggleStyle('open-filter-btn')"  -->
-         <!-- onclick="toggleStyle('close-filter-btn')" -->
+   
          <div class="button container mx-auto my-6 bg-base-200 shadow-md p-5">
-            <button  class="btn btn-primary px-12 py-4 text-white" id="all-filter-btn">All</button>
-            <button class="btn bg-base-100 text-gray-500 px-12 py-4" id="open-filter-btn">Open</button>
-            <button  class="btn bg-base-100 text-gray-500" id="close-filter-btn"> Close</button>
+            <button  class="btn btn-primary px-12 py-4 text-white filterBtn" id="all-filter-btn">All</button>
+            <button class="btn bg-base-200 text-gray-500 px-12 py-4 filterBtn" id="open-filter-btn">Open</button>
+            <button  class="btn bg-base-200 text-gray-500 filterBtn" id="close-filter-btn"> Close</button>
         </div>
 
         <!-- Issue Count -->
@@ -65,9 +63,9 @@
               <img src="./assets/Aperture.png" alt="">
             </div>
             <div>
-              <p class="text-gray-500 all-count-class font-semibold text-xl"><span id="allCount" >0</span> Issues</p>
-              <p class="text-gray-500 all-count-class hidden"><span id="openCount" >0</span> Issues</p>
-              <p class="text-gray-500 all-count-class hidden"><span id="closeCount" >0</span> Issues</p>
+              <p class="text-gray-500 font-semibold text-xl all-count-class"><span id="allCount" >0</span> Issues</p>
+              <p class="text-gray-500 font-semibold text-xl all-count-class  hidden"><span id="openCount" >0</span> Issues</p>
+              <p class="text-gray-500 font-semibold text-xl all-count-class hidden"><span id="closeCount" >0</span> Issues</p>
               <p class="text-[#64748B]">Track and manage your project issues</p>
             </div>
           </div>
@@ -95,7 +93,7 @@
         <!-- Data container -->
          <section class="container mx-auto ">
 
-          <div id="issue-container" class="grid grid-cols-1 md:grid-cols-4 gap-2 ">
+          <div id="issue-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 ">
             <!-- data dynamically added here -->
              
              
