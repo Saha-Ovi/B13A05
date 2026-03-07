@@ -150,7 +150,17 @@ document.getElementById("close-filter-btn").addEventListener("click",async ()=>
 
 })
 
+// search function
 
+document.getElementById("search-btn").addEventListener("click",async ()=>
+{
+    const searchInput=document.getElementById("search-input");
+    const input=searchInput.value;
+    const res=await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${input}`);
+    const data=await res.json();
+    // console.log(data.data);
+    displayIssues(data.data);
+})
 
 
 
