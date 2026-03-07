@@ -115,12 +115,14 @@ function displayIssues(issues) {
     container.appendChild(div);
   });
 }
+// all button
 document.getElementById("all-filter-btn").addEventListener("click",()=>
 {
     countActive("all","all-filter-btn");
     displayIssues(allIssue);
 } );
 
+// open button
 document.getElementById("open-filter-btn").addEventListener("click",async ()=>
 {
   const res=await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
@@ -134,6 +136,19 @@ document.getElementById("open-filter-btn").addEventListener("click",async ()=>
 
 })
 
+// close button done
+document.getElementById("close-filter-btn").addEventListener("click",async ()=>
+{
+  const res=await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
+  const data= await res.json();
+  // console.log(data.data);
+  const issues=data.data;
+  const issuesContainer=issues.filter(issue=>issue.status==="closed");
+  // console.log(issuesContainer);
+  countActive("closed","close-filter-btn")
+  displayIssues(issuesContainer);
+
+})
 
 
 
