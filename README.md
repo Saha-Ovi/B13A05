@@ -70,7 +70,7 @@ An arrow function is shorter way to write a function in Javascript. we use ⇒(a
 
 Template literals  are a feature in Javascript that allows us to create a string using backtick 
 
-syntax ( `  ` ). 
+syntax ( ` `). 
 
 🔹 We use this for several kinds of works:
 
