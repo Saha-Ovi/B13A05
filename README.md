@@ -1,3 +1,87 @@
+1️⃣ What is the difference between `var`, `let`, and `const`?
+
+The main difference between var let and const is scope, hoisting, reassigned and redeclaration
+
+ 
+🔹 `let:`
+
+1. Hoisted but in Temporal dead zone (TDZ)
+2. can be reassigned
+3. can not be redeclared
+4. `let` is **block scope**
+
+🔹 `var :` 
+
+1. Hoisted and initialized as undefined
+2. can be reassigned
+3. can be redeclared
+4. `var` is **Function Scope**
+
+🔹 `const :`
+
+1. Hoisted but in Temporal dead zone(TDZ)
+2. can not be reassigned
+3. can not be redeclared
+4. `const` is block scope
+5. must be initialized when declared.
+
+2️⃣ What is the spread operator (`...`)?
+
+The spread operator is an ES6 feature used to expand iterables element
+(array, object) into individual element.
+
+🔹 The use of spread operator:
+
+1. spread operator  creates a reference copy of an array.
+2. Spread operator expands array elements
+3. spread also used for merge array and object
+4. array can be pass as parameter value using spread operator.
+
+3️⃣ What is the difference between map(), filter(), and forEach()?
+
+map(), filter(), and forEach() is Javascript function used to traverse array but these function behaves differently.
+
+🔹 map()
+
+Used to transform each element to the newly created array.
+
+1. Return a new array
+2. New array length is same as original or old array.
+
+🔹 filter()
+
+creates a new array with elements that passes a condition given in the
+
+1. Return a new array.
+2. New array length may be smaller than original array.
+
+🔹 forEach()
+
+Traverse through the whole array and executes some functional task for each element.
+
+1. Do not return new array.
+2. used for DOM update etc.
+
+4️⃣ What is an arrow function?
+
+An arrow function is shorter way to write a function in Javascript. we use ⇒(arrow ) this syntax to declare arrow function. it was introduced in ES6. we use arrow function for cleaner and shorter syntax. it makes code more readable. arrow function don’t have this. we use this from the surrounding scope.
+
+5️⃣ What are template literals?
+
+Template literals  are a feature in Javascript that allows us to create a string using backtick 
+
+syntax ( `  ` ). 
+
+🔹 We use this for several kinds of works:
+
+1. Supports multi line strings.
+2. Easily inserts variable and expression.
+3. Also we can use condition using these.
+4. Makes code cleaner and more readable.
+
+
+
+
 # 🌟 Welcome To (সহজ সরল সিম্পল) Assignment - 5
 
 # **📅 Deadline For 60 marks:** 9th March, 2026 (11:59 pm ⏱️)  
