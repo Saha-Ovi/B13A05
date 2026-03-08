@@ -1,107 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>GitHub Issues Tracker</title>
-    <link
-      rel="shortcut icon"
-      href="./assets/github-logo.png"
-      type="image/x-icon"
-    />
-    <!-- DaisyUI and Tailwind -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/daisyui@5"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <!-- Google Font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Custom CSS -->
-     <link rel="stylesheet" href="./styles.css">
-  </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Issues Tracker</title>
+  <link rel="shortcut icon" href="./assets/github-logo.png" type="image/x-icon" />
+  <!-- DaisyUI and Tailwind -->
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./styles.css">
 </head>
+</head>
+
 <body>
-    <header class="w-full md:w-[80%] mx-auto pt-4">
-        <div class="navbar bg-base-100 shadow-sm flex flex-col md:flex-row gap-4">
-            <!-- left -->
-  <div class="flex items-center gap-2 flex-1">
-    <img class="w-6 " src="./assets/github-logo.png" alt="">
-    <a class="btn btn-ghost text-lg md:text-xl">GitHub Issues Tracker</a>
-  </div>
-  <!-- right -->
-  <div class="join w-full md:w-auto ">
-  <div class="w-full" >
-    <label class="input validator join-item w-full md:w-auto">
-      <input id="search-input" class="w-full" type="text" placeholder="Search issues..." required />
-    </label>
-  </div>
-  <button id="search-btn" class="btn btn-primary join-item">Search</button>
-</div>
-</div>
-    </header>
-    <main>
-      <!-- toggle function button -->
-   
-         <div class="button container mx-auto my-6 bg-base-200 shadow-md p-5">
-            <button  class="btn btn-primary px-12 py-4 text-white filterBtn" id="all-filter-btn">All</button>
-            <button class="btn bg-base-200 text-gray-500 px-12 py-4 filterBtn" id="open-filter-btn">Open</button>
-            <button  class="btn bg-base-200 text-gray-500 filterBtn" id="close-filter-btn"> Close</button>
+  <header class="w-full md:w-[80%] mx-auto pt-4">
+    <div class="navbar bg-base-100 shadow-sm flex flex-col md:flex-row gap-4">
+      <!-- left -->
+      <div class="flex items-center gap-2 flex-1">
+        <img class="w-6 " src="./assets/github-logo.png" alt="">
+        <a class="btn btn-ghost text-lg md:text-xl">GitHub Issues Tracker</a>
+      </div>
+      <!-- right -->
+      <div class="join w-full md:w-auto ">
+        <div class="w-full">
+          <label class="input validator join-item w-full md:w-auto">
+            <input id="search-input" class="w-full" type="text" placeholder="Search issues..." required />
+          </label>
         </div>
+        <button id="search-btn" class="btn btn-primary join-item">Search</button>
+      </div>
+    </div>
+  </header>
+  <main>
+    <!-- toggle function button -->
 
-        <!-- Issue Count -->
-        <section class="container mx-auto flex justify-between items-center bg-base-200 shadow-md p-5">
-          <!-- left -->
-          <div class="flex justify-center items-center gap-2">
-            <div>
-              <img src="./assets/Aperture.png" alt="">
-            </div>
-            <div>
-              <p class="text-gray-500 font-semibold text-xl all-count-class"><span id="allCount" >0</span> Issues</p>
-              <p class="text-gray-500 font-semibold text-xl all-count-class  hidden"><span id="openCount" >0</span> Issues</p>
-              <p class="text-gray-500 font-semibold text-xl all-count-class hidden"><span id="closeCount" >0</span> Issues</p>
-              <p class="text-[#64748B]">Track and manage your project issues</p>
-            </div>
+    <div class="button container mx-auto my-6 bg-base-200 shadow-md p-5">
+      <button class="btn btn-primary px-12 py-4 text-white filterBtn" id="all-filter-btn">All</button>
+      <button class="btn bg-base-200 text-gray-500 px-12 py-4 filterBtn" id="open-filter-btn">Open</button>
+      <button class="btn bg-base-200 text-gray-500 filterBtn" id="close-filter-btn"> Close</button>
+    </div>
+
+    <!-- Issue Count -->
+    <section class="container mx-auto flex justify-between items-center bg-base-200 shadow-md p-5 ">
+      <!-- left -->
+      <div class="flex justify-center items-center gap-2">
+        <div>
+          <img src="./assets/Aperture.png" alt="">
+        </div>
+        <div>
+          <p class="text-gray-500 font-semibold text-xl all-count-class"><span id="allCount">0</span> Issues</p>
+          <p class="text-gray-500 font-semibold text-xl all-count-class  hidden"><span id="openCount">0</span> Issues
+          </p>
+          <p class="text-gray-500 font-semibold text-xl all-count-class hidden"><span id="closeCount">0</span> Issues
+          </p>
+          <p class="text-[#64748B]">Track and manage your project issues</p>
+        </div>
+      </div>
+      <!-- right -->
+      <div class="grid grid-cols-2 items-center gap-4">
+
+        <div class="flex items-center gap-2">
+          <!-- Open  -->
+          <div>
+            <img src="./assets/Green-Ellipse .png" alt="">
           </div>
-          <!-- right -->
-          <div class="grid grid-cols-2 items-center gap-4">
-            
-              <div class="flex items-center gap-2">
-                <!-- Open  -->
-              <div>
-                <img src="./assets/Green-Ellipse .png" alt="">
-              </div>
-              <p>Open</p>
-            </div>
-            <!-- close -->
-            <div class="flex items-center gap-2">
-              <div >
-                <img src="./assets/Purple-Ellipse .png" alt="">
-              </div>
-              <p>Close</p>
-            </div>
+          <p>Open</p>
+        </div>
+        <!-- close -->
+        <div class="flex items-center gap-2">
+          <div>
+            <img src="./assets/Purple-Ellipse .png" alt="">
           </div>
-    
-        </section>
+          <p>Close</p>
+        </div>
+      </div>
 
-        <!-- Data container -->
-         <section class="container mx-auto my-6 ">
+    </section>
 
-          <div id="issue-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 ">
-            <!-- data dynamically added here -->
-             
-             
-          </div>
+    <!-- Data container -->
+    <section class="container mx-auto my-6 ">
 
-         </section>
-    </main>
-    <script src="./script.js"></script>
+      <div id="issue-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2 ">
+        <!-- data dynamically added here -->
 
+
+      </div>
+
+    </section>
+
+    <!-- Open the modal using ID.showModal() method -->
+    <section>
+      
+      <dialog id="issue_Modal" class="modal">
+       <!-- dynamically data added here -->
+      </dialog>
+    </section>
+  </main>
+<!-- js connection -->
+<script src="./script.js"></script>
 </body>
+
 </html>

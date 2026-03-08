@@ -80,32 +80,33 @@ function displayIssues(issues) {
     // element creation for each issue
 
     const div = document.createElement("div");
-    div.className=`"card border-2 rounded-lg  p-5 ${borderColor} bg-base-100 shadow-sm`
-    div.innerHTML = `<div ">
+    div.className=`card border-2 rounded-lg  p-5 ${borderColor} bg-base-100 shadow-sm`
+    div.innerHTML = `
+    <div  class="cursor-pointer">
 
   <!-- Top section -->
   <div class="flex justify-between items-center">
-    <img src="${icon}" alt="">
-    <p class="text-sm font-semibold badge ${priorityBtn}">${issue.priority}</p>
+    <img onclick="modalShow(${issue.id})" src="${icon}" alt="">
+    <p onclick="modalShow(${issue.id})" class="text-sm font-semibold badge ${priorityBtn}">${issue.priority}</p>
   </div>
 
   <!-- Content -->
   <div class="mt-3 space-y-2">
-    <h4 class="font-semibold text-lg">
+    <h4 onclick="modalShow(${issue.id})" class="font-semibold text-lg">
       ${issue.title} </h4>
 
-    <p class="text-gray-500">
+    <p onclick="modalShow(${issue.id})" class="text-gray-500 ">
      ${issue.description}
     </p>
 
-    <div class="flex gap-2">
+    <div onclick="modalShow(${issue.id})" class="flex gap-2">
       ${labelContainer}
     </div>
 
     <hr>
 
     <!-- Footer -->
-    <div class=" text-sm text-gray-500">
+    <div onclick="modalShow(${issue.id})" class=" text-sm text-gray-500">
       <p>${issue.id} ${issue.author}</p>
       <span> ${issue.createdAt} </span>
     </div>
@@ -161,6 +162,62 @@ document.getElementById("search-btn").addEventListener("click",async ()=>
     // console.log(data.data);
     displayIssues(data.data);
 })
+
+async function modalShow(id)
+{
+     const res=await fetch(`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`);
+     const data= await res.json();
+    //  console.log(data.data);
+    const issue=data.data;
+    const modalContainer=document.getElementById("issue_Modal");
+    modalContainer.innerHTML="";
+
+   const labelContainer=issue.labels.map(label=>
+      { const labelColors=label==="bug"?"badge-error":label=== "enhancement"?"badge-success":label==="help wanted"?"badge-warning":label=="documentation"?"badge-info":"badge-primary";
+        return `<span class="badge ${labelColors}">${label}</span>`;
+      }).join(" ");
+    
+    const priorityBtn=issue.priority==="low"? "badge-base-200":issue.priority==="medium" ?"badge-success":"badge-error";
+    const statusBtn=issue.status==="open"?"badge-success":"badge-primary";
+
+    const div=document.createElement("div");
+    div.innerHTML=`
+     <div class="modal-box space-y-4">
+                <h3 class="text-xl font-bold">${issue.title}</h3>
+              <div class="flex items-center gap-2">
+                <p class="badge font-medium ${statusBtn}"> ${issue.status}</p>
+                <p class="text-[#64748B]">${issue.author}</p>
+                <p class="text-[#64748B]">${issue.createdAt}</p>
+              </div>
+              <div class=" font-medium ">
+                ${labelContainer}
+              </div>
+              <p class="text-[#64748B]">${issue.description}</p>
+              <div class="grid grid-cols-2 justify-between items-center p-4 card bg-base-200 shadow-xl">
+                <div>
+                  <p>Assignee:</p>
+                  <p class="font-semibold">${issue.assignee} </p>
+                </div>
+                <div>
+                  <p>Priority:</p>
+                  <p class="badge font-medium ${priorityBtn}"> ${issue.priority} </p>
+                </div>
+              </div>
+            <div class="modal-action">
+           <form method="dialog">
+        <!-- if there is a button in form, it will close the modal -->
+          <button class="btn btn-primary">Close</button>
+       </form>
+     </div>
+              
+
+        </div>
+    
+    
+    `
+    modalContainer.appendChild(div);
+    modalContainer.showModal();
+}
 
 
 
