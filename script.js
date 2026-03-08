@@ -1,6 +1,18 @@
 // for all on click it will work for all  event listener
 let allIssue=[];
 
+// showLoading
+
+function showLoading()
+{
+    document.getElementById("issue-container").classList.add("hidden");
+    document.getElementById("loadingSpinner").classList.remove("hidden");
+}
+function hideLoading()
+{
+  document.getElementById("loadingSpinner").classList.add("hidden");
+  document.getElementById("issue-container").classList.remove("hidden");
+}
 // all issues are counted here once  when loaded 
 const issueCount=(issues)=>
 {
@@ -47,6 +59,7 @@ function countActive(type,activeBtnId)
 
 // All data
 async function loadIssues() {
+  showLoading();
   const res = await fetch(
     "https://phi-lab-server.vercel.app/api/v1/lab/issues",
   );
@@ -56,11 +69,13 @@ async function loadIssues() {
 //   issue count called
   issueCount(issues);
 //   display issue called
+hideLoading();
   displayIssues(issues);
   // console.log(data);
 }
 
 function displayIssues(issues) {
+  showLoading();
     const container = document.getElementById("issue-container");
     container.innerHTML = "";
   
@@ -115,10 +130,12 @@ function displayIssues(issues) {
 </div>`;
     container.appendChild(div);
   });
+  hideLoading();
 }
 // all button
 document.getElementById("all-filter-btn").addEventListener("click",()=>
 {
+  
     countActive("all","all-filter-btn");
     displayIssues(allIssue);
 } );
@@ -126,13 +143,15 @@ document.getElementById("all-filter-btn").addEventListener("click",()=>
 // open button
 document.getElementById("open-filter-btn").addEventListener("click",async ()=>
 {
+  showLoading();
   const res=await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
   const data= await res.json();
   // console.log(data.data);
   const issues=data.data;
   const issuesContainer=issues.filter(issue=>issue.status==="open");
   // console.log(issuesContainer);
-  countActive("open","open-filter-btn")
+  hideLoading();
+  countActive("open","open-filter-btn");
   displayIssues(issuesContainer);
 
 })
@@ -140,13 +159,15 @@ document.getElementById("open-filter-btn").addEventListener("click",async ()=>
 // close button done
 document.getElementById("close-filter-btn").addEventListener("click",async ()=>
 {
+  showLoading();
   const res=await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
   const data= await res.json();
   // console.log(data.data);
   const issues=data.data;
   const issuesContainer=issues.filter(issue=>issue.status==="closed");
   // console.log(issuesContainer);
-  countActive("closed","close-filter-btn")
+  hideLoading();
+  countActive("closed","close-filter-btn");
   displayIssues(issuesContainer);
 
 })
@@ -218,8 +239,6 @@ async function modalShow(id)
     modalContainer.appendChild(div);
     modalContainer.showModal();
 }
-
-
 
 loadIssues();
 
