@@ -217,7 +217,7 @@ async function modalShow(id)
               <div class="grid grid-cols-2 justify-between items-center p-4 card bg-base-200 shadow-xl">
                 <div>
                   <p>Assignee:</p>
-                  <p class="font-semibold">${issue.assignee} </p>
+                   <p class="font-semibold">${issue.assignee ? issue.assignee : "Not Found"}</p>
                 </div>
                 <div>
                   <p>Priority:</p>
